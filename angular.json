@@ -3,32 +3,18 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-jest-starter": {
+    "rxjs-task-manager-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "standalone": true,
-          "inlineTemplate": false,
-          "inlineStyle": false,
-          "skipTests": false,
-          "style": "css"
+          "style": "css",
+          "standalone": true
         },
         "@schematics/angular:directive": {
-          "standalone": true,
-          "skipTests": false
+          "standalone": true
         },
         "@schematics/angular:pipe": {
-          "standalone": true,
-          "skipTests": false
-        },
-        "@schematics/angular:service": {
-          "skipTests": false
-        },
-        "@schematics/angular:guard": {
-          "skipTests": false
-        },
-        "@schematics/angular:interceptor": {
-          "skipTests": false
+          "standalone": true
         }
       },
       "root": "",
@@ -38,6 +24,8 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/rxjs-task-manager-demo",
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -51,7 +39,8 @@
             ],
             "styles": [
               "src/styles.css"
-            ]
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -63,8 +52,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
                 }
               ],
               "outputHashing": "all"
@@ -81,16 +70,13 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-jest-starter:build:production"
+              "buildTarget": "rxjs-task-manager-demo:build:production"
             },
             "development": {
-              "buildTarget": "angular-jest-starter:build:development"
+              "buildTarget": "rxjs-task-manager-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
         }
       }
     }

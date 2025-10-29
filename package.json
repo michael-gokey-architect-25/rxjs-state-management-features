@@ -1,13 +1,16 @@
 {
-  "name": "angular-jest-starter-gh",
+  "name": "rxjs-task-manager-demo",
   "version": "1.0.0",
   "author": "Michael Gokey <michael.gokey.architect@gmail.com>",
-  "description": "Angular Jest starter",
+  "description": "Educational RxJS State Management Demo with Angular v20 and Jest",
   "keywords": [
     "Angular",
+    "RxJS",
+    "State Management",
     "Jest",
     "Unit Testing",
-    "Routing"
+    "BehaviorSubject",
+    "Observable Patterns"
   ],
   "license": "MIT",
   "scripts": {
