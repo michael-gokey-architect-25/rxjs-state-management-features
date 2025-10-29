@@ -1,1 +1,42 @@
-<p>filter works!</p>
+<!-- src/app/components/filter/filter.component.html -->
+
+<div class="filter-container">
+  <!-- Search Input Field -->
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search Tasks</mat-label>
+    <input 
+      matInput 
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchChange($event)"
+      placeholder="Type to search..."
+      aria-label="Search tasks">
+    <mat-icon matPrefix>search</mat-icon>
+    
+    <!-- Clear button (only shows when there's text) -->
+    <button 
+      mat-icon-button 
+      matSuffix 
+      *ngIf="searchTerm"
+      (click)="clearSearch()"
+      aria-label="Clear search"
+      type="button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  
+  <!-- Status Filter Dropdown -->
+  <mat-form-field appearance="outline" class="status-field">
+    <mat-label>Filter by Status</mat-label>
+    <mat-select 
+      [(ngModel)]="statusFilter"
+      (ngModelChange)="onStatusFilterChange($event)"
+      aria-label="Filter tasks by status">
+      <mat-option 
+        *ngFor="let option of statusOptions" 
+        [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+    <mat-icon matPrefix>filter_list</mat-icon>
+  </mat-form-field>
+</div>

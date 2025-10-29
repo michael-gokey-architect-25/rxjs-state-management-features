@@ -1,0 +1,36 @@
+/* src/app/components/filter/filter.component.css */
+
+.filter-container {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-field {
+  flex: 2;
+  min-width: 200px;
+}
+
+.status-field {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Responsive layout for mobile */
+/*
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .search-field,
+  .status-field {
+    width: 100%;
+  }
+}
+*/
