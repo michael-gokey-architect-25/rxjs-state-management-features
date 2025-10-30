@@ -8,13 +8,31 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "css",
-          "standalone": true
+          "standalone": true,
+          "flat": false,
+          "skipTests": false,
+          "inlineStyle": false,
+          "inlineTemplate": false
         },
         "@schematics/angular:directive": {
-          "standalone": true
+          "standalone": true,
+          "flat": false,
+          "skipTests": false
         },
         "@schematics/angular:pipe": {
-          "standalone": true
+          "standalone": true,
+          "flat": false,
+          "skipTests": false
+        },
+        "@schematics/angular:service": {
+          "flat": false,
+          "skipTests": false
+        },
+        "@schematics/angular:interface": {
+          "prefix": ""
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -80,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
