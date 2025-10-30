@@ -1,11 +1,61 @@
 <!-- src/app/app.component.html -->
-<mat-toolbar color="primary">
-  <span>{{ title }}</span>
-  <span class="spacer"></span>
-  <a mat-button routerLink="/hello" routerLinkActive="active">Hello</a>
-  <a mat-button routerLink="/users" routerLinkActive="active">Users</a>
-</mat-toolbar>
 
-<div class="content">
-  <router-outlet></router-outlet>
+
+<div class="app-container">
+  
+  <!-- Header Toolbar -->
+  <mat-toolbar color="primary" class="app-toolbar">
+    <mat-icon class="toolbar-icon">task_alt</mat-icon>
+    <span class="toolbar-title">{{ title }}</span>
+    <span class="spacer"></span>
+    <mat-icon class="toolbar-badge">school</mat-icon>
+    <span class="toolbar-subtitle">RxJS State Management Demo</span>
+  </mat-toolbar>
+  
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <div class="container">
+      
+      <!-- Info Banner -->
+      <div class="info-banner">
+        <mat-icon>info</mat-icon>
+        <div class="info-content">
+          <h3>Learning RxJS State Management</h3>
+          <p>
+            This demo showcases <strong>BehaviorSubject patterns</strong>, 
+            <strong>derived state with combineLatest</strong>, 
+            <strong>optimistic updates with rollback</strong>, and 
+            <strong>proper memory management</strong>. 
+            Open DevTools to see console logs and try the 10% simulated error rate!
+          </p>
+        </div>
+      </div>
+      
+      <!-- Task Form -->
+      <app-task-form></app-task-form>
+      
+      <!-- Filters -->
+      <app-filter></app-filter>
+      
+      <!-- Task List -->
+      <app-task-list></app-task-list>
+      
+      <!-- Statistics -->
+      <app-stats></app-stats>
+      
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>
+      <mat-icon class="footer-icon">lightbulb</mat-icon>
+      Built with Angular v20, RxJS v7, Angular Material, and Jest. No SEO on pages yet.
+    </p>
+    <p class="footer-credit">
+      Demonstrating professional RxJS state management patterns locally without NgRx globally.
+      <p>Copyright &copy; 2025 Michael Gokey. All rights reserved.</p>
+    </p>
+  </footer>
+  
 </div>

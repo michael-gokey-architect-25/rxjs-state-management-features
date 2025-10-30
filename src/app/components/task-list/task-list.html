@@ -1,1 +1,68 @@
-<p>task-list works!</p>
+<!-- src/app/components/task-list/task-list.component.html -->
+
+
+<!-- Loading Spinner -->
+<div class="loading-container" *ngIf="loading$ | async">
+  <mat-spinner diameter="40"></mat-spinner>
+  <p>Loading tasks...</p>
+</div>
+
+<!-- Task List -->
+<div class="task-list-container">
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="(filteredTasks$ | async)?.length === 0 && !(loading$ | async)">
+    <mat-icon class="empty-icon">inbox</mat-icon>
+    <h3>No tasks found</h3>
+    <p>Try adjusting your filters or add a new task to get started</p>
+  </div>
+  
+  <!-- Tasks -->
+  <mat-card 
+    class="task-card"
+    [class.completed]="task.completed"
+    *ngFor="let task of filteredTasks$ | async; trackBy: trackByTaskId">
+    
+    <div class="task-content">
+      <!-- Checkbox -->
+      <mat-checkbox
+        [checked]="task.completed"
+        (change)="onToggleTask(task)"
+        color="primary"
+        class="task-checkbox"
+        [attr.aria-label]="'Mark task ' + task.title + ' as ' + (task.completed ? 'incomplete' : 'complete')">
+      </mat-checkbox>
+      
+      <!-- Task Details -->
+      <div class="task-details">
+        <div class="task-header">
+          <h3 class="task-title" [class.strike]="task.completed">
+            {{ task.title }}
+          </h3>
+          <mat-chip 
+            [color]="getPriorityColor(task.priority)"
+            class="priority-chip">
+            {{ task.priority }}
+          </mat-chip>
+        </div>
+        
+        <p class="task-description" *ngIf="task.description">
+          {{ task.description }}
+        </p>
+        
+        <span class="task-date">
+          <mat-icon class="date-icon">schedule</mat-icon>
+          {{ formatDate(task.createdAt) }}
+        </span>
+      </div>
+      
+      <!-- Delete Button -->
+      <button
+        mat-icon-button
+        (click)="onDeleteTask(task)"
+        class="delete-button"
+        [attr.aria-label]="'Delete task ' + task.title">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card>
+</div>

@@ -11,8 +11,9 @@
  * 5. Test filtering logic
  */
 import { TestBed } from '@angular/core/testing';
-import { TaskStateService } from './task-state.service';
-import { Task, TaskStatusFilter } from '../models/task.model';
+import { TaskStateService } from './task-state';
+import { Task, TaskStatusFilter } from '../models/task';
+
 
 describe('TaskStateService', () => {
   let service: TaskStateService;
@@ -24,7 +25,7 @@ describe('TaskStateService', () => {
     service = TestBed.inject(TaskStateService);
   });
 
-  it('should be created', () => {
+  it('should create TaskStateService', () => {
     expect(service).toBeTruthy();
   });
 

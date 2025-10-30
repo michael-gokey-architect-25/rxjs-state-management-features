@@ -32,7 +32,7 @@ describe('FilterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component FilterComponent', () => {
     expect(component).toBeTruthy();
   });
 

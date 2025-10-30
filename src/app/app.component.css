@@ -1,7 +1,193 @@
 /* src/app/app.component.css */
-.spacer {
-  flex: 1 1 auto;
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
-.content {
-  padding: 1rem;
+
+/* Header Toolbar */
+.app-toolbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.toolbar-icon {
+  margin-right: 12px;
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.toolbar-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.toolbar-badge {
+  margin-right: 8px;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.toolbar-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Main Content Area */
+.content-wrapper {
+  flex: 1;
+  padding: 24px 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Info Banner */
+.info-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-banner mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-content {
+  flex: 1;
+}
+
+.info-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.info-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.info-content strong {
+  font-weight: 600;
+}
+
+/* Footer */
+.app-footer {
+  padding: 20px;
+  text-align: center;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 40px;
+}
+
+.app-footer p {
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.app-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-credit {
+  font-size: 12px;
+  color: #999;
+}
+
+.footer-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #ffd54f;
+}
+
+/* Error Snackbar Custom Styling */
+::ng-deep .error-snackbar {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+::ng-deep .error-snackbar .mat-simple-snackbar-action {
+  color: white !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .toolbar-subtitle {
+    display: none;
+  }
+  
+  .toolbar-badge {
+    display: none;
+  }
+  
+  .toolbar-title {
+    font-size: 18px;
+  }
+  
+  .info-banner {
+    flex-direction: column;
+    padding: 16px;
+  }
+  
+  .info-banner mat-icon {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .info-content h3 {
+    font-size: 16px;
+  }
+  
+  .info-content p {
+    font-size: 13px;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  .content-wrapper {
+    padding: 16px 0;
+  }
+  
+  .app-footer {
+    padding: 16px;
+    margin-top: 24px;
+  }
+  
+  .app-footer p {
+    font-size: 12px;
+  }
 }
