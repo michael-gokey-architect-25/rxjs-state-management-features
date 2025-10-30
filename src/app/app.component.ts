@@ -26,11 +26,11 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { FilterComponent } from './components/filter/filter.component';
-import { TaskListComponent } from './components/task-list/task-list.component';
-import { TaskFormComponent } from './components/task-form/task-form.component';
-import { StatsComponent } from './components/stats/stats.component';
-import { TaskStateService } from './services/task-state.service';
+import { FilterComponent } from './components/filter/filter';
+import { TaskListComponent } from './components/task-list/task-list';
+import { TaskFormComponent } from './components/task-form/task-form';
+import { StatsComponent } from './components/stats/stats';
+import { TaskStateService } from './services/task-state';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

@@ -45,9 +45,9 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnDestroy {
+  constructor(public taskService: TaskStateService) {}
   /**
    * Subject for unsubscribing from manual subscriptions
-   * 
    * PATTERN: takeUntil for memory leak prevention
    * - Create a Subject that emits once on component destroy
    * - Use takeUntil(this.destroy$) on all manual subscriptions
@@ -58,7 +58,6 @@ export class TaskListComponent implements OnDestroy {
   /**
    * Expose service observables to template
    * Template uses async pipe for automatic subscription management
-   * 
    * WHY expose directly instead of subscribing in component?
    * - Async pipe handles subscribe/unsubscribe automatically
    * - No risk of memory leaks
@@ -68,11 +67,10 @@ export class TaskListComponent implements OnDestroy {
   filteredTasks$ = this.taskService.filteredTasks$;
   loading$ = this.taskService.loading$;
 
-  constructor(public taskService: TaskStateService) {}
+  
   
   /**
    * Toggle task completion status
-   * 
    * DELEGATION PATTERN:
    * - Component just handles UI events
    * - Service handles state mutation logic
@@ -84,12 +82,10 @@ export class TaskListComponent implements OnDestroy {
   
   /**
    * Delete task with optimistic update
-   * 
    * WHY subscribe here when we use async pipe elsewhere?
    * - Need to handle the result of the async operation
    * - Want to log success/error
    * - Service already handles UI update optimistically
-   * 
    * NOTE: Use takeUntil to prevent memory leaks
    */
   onDeleteTask(task: Task): void {
@@ -153,7 +149,6 @@ export class TaskListComponent implements OnDestroy {
    * Memory leak prevention:
    * - Emit value to complete all takeUntil operators
    * - Complete the subject itself
-   * 
    * NOTE: Async pipe subscriptions don't need this - they auto-cleanup!
    */
   ngOnDestroy(): void {

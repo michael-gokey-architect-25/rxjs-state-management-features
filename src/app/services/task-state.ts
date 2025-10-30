@@ -5,7 +5,6 @@
  * TaskStateService - Centralized RxJS State Management
  * This service demonstrates professional RxJS patterns for managing
  * application state without a heavy framework like NgRx.
- * 
  * KEY PATTERNS DEMONSTRATED:
  * 1. BehaviorSubject for writable state (private)
  * 2. Observable for read-only exposure (public)
@@ -14,18 +13,17 @@
  * 5. shareReplay for efficient multicasting
  * 6. Optimistic updates with rollback on error
  * 7. Separation of concerns (state vs. presentation logic)
- * 
  * ARCHITECTURE:
  * - Private BehaviorSubjects hold mutable state
  * - Public Observables expose immutable state
  * - Action methods are the only way to modify state
  * - Selectors provide computed/derived values
  */
-
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest, throwError } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged, catchError, shareReplay } from 'rxjs/operators';
-import { Task, TaskStatusFilter, TaskStats } from '../models/task.model';
+import { Task, TaskStatusFilter, TaskStats } from '../models/task';
+
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +37,6 @@ export class TaskStateService {
   
   /**
    * BehaviorSubject: Holds current value + emits immediately to new subscribers
-   * 
    * WHY BehaviorSubject vs Subject vs ReplaySubject?
    * - BehaviorSubject: Always has a value, perfect for state
    * - Subject: No initial value, good for events
@@ -76,7 +73,6 @@ export class TaskStateService {
    * 1. tasks$ - The full task list
    * 2. searchTerm$ - User's search input (with debouncing)
    * 3. statusFilter$ - Active/Completed/All filter
-   * 
    * WHY debounceTime + distinctUntilChanged on searchTerm?
    * - debounceTime(300): Wait 300ms after user stops typing
    * - distinctUntilChanged: Only emit if value actually changed
@@ -113,7 +109,6 @@ export class TaskStateService {
     }),
     /**
      * shareReplay: Share execution and replay last value
-     * 
      * WHY shareReplay?
      * - Multiple components can subscribe without re-running logic
      * - Caches the last emitted value (bufferSize: 1)
