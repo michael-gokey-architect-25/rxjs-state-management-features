@@ -22,7 +22,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest, throwError } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged, catchError, shareReplay } from 'rxjs/operators';
-import { Task, TaskStatusFilter, TaskStats } from '../models/task';
+import { Task, TaskStatusFilter, TaskStats } from '../models/task.model';
 
 
 @Injectable({

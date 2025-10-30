@@ -23,7 +23,10 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { TaskStateService } from '../../services/task-state';
+import { TaskStateService } from '../../services/task-state.service';
+import { TaskStats } from '../../models/task.model';
+import { Observable } from 'rxjs';
+
 
 
 @Component({
@@ -39,19 +42,12 @@ import { TaskStateService } from '../../services/task-state';
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent {
-  constructor(public taskService: TaskStateService) {}
-  /**
-   * Expose derived state observable to template
-   * taskStats$ is computed in the service using:
-   * this.tasks$.pipe(map(tasks => ({ ... computed stats ... })))
-   * Benefits:
-   * - Always up-to-date (reactive)
-   * - No manual recalculation needed
-   * - Efficient (shareReplay caching)
-   * - Testable (mock the observable)
-   */
-  taskStats$ = this.taskService.taskStats$;
+  taskStats$!: Observable<TaskStats>;
 
+  constructor(public taskService: TaskStateService) {
+    // Initialize in constructor
+    this.taskStats$ = taskService.taskStats$;
+  }
   
   
   /**

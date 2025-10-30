@@ -11,8 +11,8 @@
  * 5. Test filtering logic
  */
 import { TestBed } from '@angular/core/testing';
-import { TaskStateService } from './task-state';
-import { Task, TaskStatusFilter } from '../models/task';
+import { TaskStateService } from './task-state.service';
+import { Task, TaskStatusFilter } from '../models/task.model';
 
 
 describe('TaskStateService', () => {

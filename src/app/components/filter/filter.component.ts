@@ -19,8 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { TaskStateService } from '../../services/task-state';
-import { TaskStatusFilter } from '../../models/task';
+import { TaskStateService } from '../../services/task-state.service';
+import { TaskStatusFilter } from '../../models/task.model';
 import { Subject, takeUntil } from 'rxjs';
 
 

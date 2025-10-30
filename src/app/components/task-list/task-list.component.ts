@@ -23,9 +23,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { TaskStateService } from '../../services/task-state';
-import { Task } from '../../models/task';
-import { Subject } from 'rxjs';
+import { TaskStateService } from '../../services/task-state.service';
+import { Task } from '../../models/task.model';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 
@@ -45,29 +45,17 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnDestroy {
-  constructor(public taskService: TaskStateService) {}
-  /**
-   * Subject for unsubscribing from manual subscriptions
-   * PATTERN: takeUntil for memory leak prevention
-   * - Create a Subject that emits once on component destroy
-   * - Use takeUntil(this.destroy$) on all manual subscriptions
-   * - Complete the subject in ngOnDestroy
-   */
   private destroy$ = new Subject<void>();
   
-  /**
-   * Expose service observables to template
-   * Template uses async pipe for automatic subscription management
-   * WHY expose directly instead of subscribing in component?
-   * - Async pipe handles subscribe/unsubscribe automatically
-   * - No risk of memory leaks
-   * - Less boilerplate code
-   * - Better performance (OnPush change detection works better)
-   */
-  filteredTasks$ = this.taskService.filteredTasks$;
-  loading$ = this.taskService.loading$;
+  // Declare properties without initialization
+  filteredTasks$!: Observable<Task[]>;
+  loading$!: Observable<boolean>;
 
-  
+  constructor(public taskService: TaskStateService) {
+    // Initialize in constructor
+    this.filteredTasks$ = this.taskService.filteredTasks$;
+    this.loading$ = this.taskService.loading$;
+  }
   
   /**
    * Toggle task completion status
