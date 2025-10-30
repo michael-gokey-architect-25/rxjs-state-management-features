@@ -1,1 +1,70 @@
-<p>task-form works!</p>
+<!-- src/app/components/task-form/task-form.component.html -->
+
+
+<mat-card class="form-card">
+  <mat-card-header>
+    <mat-icon class="header-icon">add_circle_outline</mat-icon>
+    <mat-card-title>Add New Task</mat-card-title>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
+      
+      <!-- Title Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Task Title</mat-label>
+        <input 
+          matInput 
+          formControlName="title"
+          placeholder="Enter task title"
+          required
+          aria-label="Task title">
+        <mat-icon matPrefix>title</mat-icon>
+        <mat-error *ngIf="hasError('title', 'required')">
+          Title is required
+        </mat-error>
+        <mat-error *ngIf="hasError('title', 'minlength')">
+          Minimum 3 characters required
+        </mat-error>
+      </mat-form-field>
+      
+      <!-- Description Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description (Optional)</mat-label>
+        <textarea 
+          matInput 
+          formControlName="description"
+          placeholder="Enter task description"
+          rows="3"
+          aria-label="Task description">
+        </textarea>
+        <mat-icon matPrefix>description</mat-icon>
+      </mat-form-field>
+      
+      <!-- Priority Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority" aria-label="Task priority">
+          <mat-option 
+            *ngFor="let option of priorityOptions" 
+            [value]="option.value">
+            <mat-icon class="option-icon">{{ option.icon }}</mat-icon>
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+        <mat-icon matPrefix>flag</mat-icon>
+      </mat-form-field>
+      
+      <!-- Submit Button -->
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="!taskForm.valid || isSubmitting"
+        class="submit-button">
+        <mat-icon>add</mat-icon>
+        {{ isSubmitting ? 'Adding...' : 'Add Task' }}
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

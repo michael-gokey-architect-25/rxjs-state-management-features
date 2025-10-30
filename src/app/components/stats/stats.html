@@ -1,1 +1,73 @@
-<p>stats works!</p>
+<!-- src/app/components/stats/stats.component.html -->
+
+
+<mat-card class="stats-card">
+  <mat-card-header>
+    <mat-icon class="header-icon">analytics</mat-icon>
+    <mat-card-title>Task Statistics</mat-card-title>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <!-- 
+      Async pipe subscribes to taskStats$ and unwraps the value
+      'as stats' creates a template variable for easier access
+    -->
+    <div class="stats-grid" *ngIf="taskStats$ | async as stats">
+      
+      <!-- Total Tasks -->
+      <div class="stat-item">
+        <mat-icon class="stat-icon total">list</mat-icon>
+        <div class="stat-content">
+          <span class="stat-label">Total Tasks</span>
+          <span class="stat-value">{{ stats.total }}</span>
+        </div>
+      </div>
+      
+      <mat-divider [vertical]="true" class="stat-divider"></mat-divider>
+      
+      <!-- Active Tasks -->
+      <div class="stat-item">
+        <mat-icon class="stat-icon active">pending_actions</mat-icon>
+        <div class="stat-content">
+          <span class="stat-label">Active</span>
+          <span class="stat-value">{{ stats.active }}</span>
+        </div>
+      </div>
+      
+      <mat-divider [vertical]="true" class="stat-divider"></mat-divider>
+      
+      <!-- Completed Tasks -->
+      <div class="stat-item">
+        <mat-icon class="stat-icon completed">check_circle</mat-icon>
+        <div class="stat-content">
+          <span class="stat-label">Completed</span>
+          <span class="stat-value">{{ stats.completed }}</span>
+        </div>
+      </div>
+      
+      <mat-divider [vertical]="true" class="stat-divider"></mat-divider>
+      
+      <!-- High Priority -->
+      <div class="stat-item">
+        <mat-icon class="stat-icon priority">priority_high</mat-icon>
+        <div class="stat-content">
+          <span class="stat-label">High Priority</span>
+          <span class="stat-value">{{ stats.highPriority }}</span>
+        </div>
+      </div>
+      
+      <mat-divider [vertical]="true" class="stat-divider"></mat-divider>
+      
+      <!-- Completion Rate -->
+      <div class="stat-item">
+        <mat-icon class="stat-icon rate">trending_up</mat-icon>
+        <div class="stat-content">
+          <span class="stat-label">Completion Rate</span>
+          <span class="stat-value">{{ getCompletionPercentage(stats.completed, stats.total) }}%</span>
+        </div>
+      </div>
+      
+    </div>
+  </mat-card-content>
+</mat-card>
+

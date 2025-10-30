@@ -1,0 +1,148 @@
+/* src/app/components/stats/stats.component.css */
+
+
+.stats-card {
+  margin-top: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+mat-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.header-icon {
+  color: white;
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+mat-card-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  color: white;
+}
+
+/* Stats Grid Layout */
+.stats-grid {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 0;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0; /* Allows flex items to shrink below content size */
+}
+
+/* Stat Icons with Different Colors */
+.stat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.stat-icon.total { 
+  color: #fff; 
+}
+
+.stat-icon.active { 
+  color: #ffd54f; /* Yellow */
+}
+
+.stat-icon.completed { 
+  color: #81c784; /* Green */
+}
+
+.stat-icon.priority { 
+  color: #ff8a80; /* Red */
+}
+
+.stat-icon.rate { 
+  color: #64b5f6; /* Blue */
+}
+
+/* Stat Content */
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.stat-label {
+  font-size: 12px;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Dividers between stats */
+.stat-divider {
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design for Tablets */
+@media (max-width: 1024px) {
+  .stats-grid {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .stat-item {
+    min-width: calc(50% - 8px);
+  }
+  
+  .stat-divider {
+    display: none;
+  }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 600px) {
+  .stats-card {
+    margin-top: 16px;
+  }
+  
+  .stats-grid {
+    gap: 12px;
+  }
+  
+  .stat-item {
+    min-width: 100%;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+  
+  .stat-value {
+    font-size: 20px;
+  }
+  
+  .stat-icon {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+}
